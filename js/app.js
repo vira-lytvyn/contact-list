@@ -1,5 +1,12 @@
-import { Contact } from './contact.js'
+import { View } from './view.js'
+import { Store } from './store.js'
 
-let contact = new Contact('test', 'test');
 
-console.log(contact);
+function init() {
+	this.view = new View();
+	this.store = new Store();
+
+	this.view.renderList(this.store.getContactsList());
+}
+
+window.addEventListener('load', init);
