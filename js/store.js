@@ -1,12 +1,28 @@
 export class Store {
-	getContactsList() {
-		return localStorage.getItem('contacts') || [];
-	}
+	constructor(collectionName) {
+		this.dbName = collectionName;
 
-	addContact(contact) {
-		let contactsList = this.getContactsList();
+		if (!localStorage[collectionName]) {
+			let data = {
+				contacts: []
+			}
 
-		contactsList.push(contact);
-		localStorage.setItem('contacts', contactsList);
+			localStorage.setItem(collectionName, JSON.stringify(data));
+		}
 	}
 }
+
+Store.prototype.getContactsList = function(){
+	return JSON.parse(localStorage.getItem(this.dbName)).contacts;
+};
+
+Store.prototype.addContact = function(contact){
+	let contactsList = this.getContactsList();
+
+	contactsList.push(contact);
+	this.updateCollection(contactsList);
+};
+
+Store.prototype.updateCollection = function(data){
+	localStorage.setItem(this.dbName, JSON.stringify(data));
+};

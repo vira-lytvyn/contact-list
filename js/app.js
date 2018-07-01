@@ -1,12 +1,13 @@
-import { View } from './view.js'
-import { Store } from './store.js'
-
+import {View} from './view.js';
+import {Store} from './store.js';
+import {Controller} from './controller.js';
 
 function init() {
 	this.view = new View();
-	this.store = new Store();
+	this.model = new Store('contacts-list');
+	this.controller = new Controller(this.model, this.view);
 
-	this.view.renderList(this.store.getContactsList());
+	this.controller.updateContactsTable();
 }
 
 window.addEventListener('load', init);
