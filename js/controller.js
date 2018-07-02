@@ -4,6 +4,8 @@ export class Controller {
   constructor(model, view) {
     this.model = model;
     this.view = view;
+
+    this.view.addContactBtn.addEventListener('click', this.addContact.bind(this));
   }
 }
 

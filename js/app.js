@@ -8,7 +8,6 @@ function init() {
   this.controller = new Controller(this.model, this.view);
 
   this.controller.updateContactsTable();
-  this.view.addContactBtn.addEventListener('click', this.controller.addContact);
 }
 
 window.addEventListener('load', init);

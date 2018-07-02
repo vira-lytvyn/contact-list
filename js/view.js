@@ -4,14 +4,18 @@ import {Controller} from './controller.js';
 
 export class View {
   constructor() {
-    this.contactList = qs('.contacts-list');
+    this.contactList = qs('.contacts-list tbody');
     this.newContactForm = qs('.new-contact');
     this.addContactBtn = qs('.add-contact-btn', this.newContactForm);
   }
 }
 
 View.prototype.renderListItem = function(item) {
-  return `Name ${item.name} , cell: ${item.cell}, email: ${item.email}`;
+  return `<tr>
+      <td>${item.name}</td>
+      <td>${item.cell}</td>
+      <td>${item.email}</td>
+    </tr>`;
 };
 
 View.prototype.renderList = function(list) {
