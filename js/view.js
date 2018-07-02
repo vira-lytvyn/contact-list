@@ -1,6 +1,5 @@
 import {qs, qsa} from './helpers.js';
 import {Contact} from './contact.js';
-import {Controller} from './controller.js';
 
 export class View {
   constructor() {
