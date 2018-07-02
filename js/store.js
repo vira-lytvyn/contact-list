@@ -15,6 +15,7 @@ Store.prototype.getContactsList = function() {
 Store.prototype.saveContact = function(contact) {
   let contactsList = this.getContactsList();
 
+  contact.id = contactsList.length;
   contactsList.push(contact);
   this.updateCollection(contactsList);
 };

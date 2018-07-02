@@ -12,6 +12,7 @@ export class View {
 
 View.prototype.renderListItem = function(item) {
   return `<tr>
+      <td>${item.id}</td>
       <td>${item.name}</td>
       <td>${item.cell}</td>
       <td>${item.email}</td>
