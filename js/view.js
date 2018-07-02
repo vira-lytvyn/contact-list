@@ -16,6 +16,10 @@ View.prototype.renderListItem = function(item) {
       <td>${item.name}</td>
       <td>${item.cell}</td>
       <td>${item.email}</td>
+      <td>
+        <button type="button" data-contact-id="${item.id}">Edit</button>
+        <button type="button" data-contact-id="${item.id}">Delete</button>
+      </td>
     </tr>`;
 };
 
