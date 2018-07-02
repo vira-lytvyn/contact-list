@@ -18,4 +18,5 @@ Controller.prototype.addContact = function() {
   console.log(this.view, this.model)
   let contact = this.view.readContactData();
   this.model.saveContact(contact);
+  this.updateContactsTable();
 };

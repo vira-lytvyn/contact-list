@@ -22,9 +22,9 @@ View.prototype.renderList = function(list) {
   let renderedList = '';
 
   list.forEach((element) => {
-    renderedList += renderListItem(element);
+    renderedList += this.renderListItem(element);
   });
-  this.contactList.innerText = renderedList;
+  this.contactList.innerHTML = renderedList;
 };
 
 View.prototype.readContactData = function() {
