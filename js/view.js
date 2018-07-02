@@ -1,5 +1,6 @@
 import {qs} from './helpers.js';
 import {Contact} from './contact.js';
+import {Controller} from './controller.js';
 
 export class View {
 	constructor(template) {
@@ -13,7 +14,7 @@ View.prototype.renderListItem = function(item) {
 	return `Name ${item.name} , cell: ${item.cell}, email: ${item.email}`;
 };
 
-View.prototype.renderList = function(list){
+View.prototype.renderList = function(list) {
 	let renderedList = '';
 
 	list.forEach((element) => {
@@ -22,10 +23,10 @@ View.prototype.renderList = function(list){
 	this.contactList.innerText = renderedList;
 };
 
-View.prototype.addContact = function(){
+View.prototype.readContactData = function() {
 	let name = qs('#name', this.newContactForm).value;
 	let cell = qs('#cell', this.newContactForm).value;
 	let email = qs('#email', this.newContactForm).value;
 
-	let newContact = new Contact(name, cell, email);
+	return new Contact(name, cell, email);
 };

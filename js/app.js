@@ -4,10 +4,11 @@ import {Controller} from './controller.js';
 
 function init() {
 	this.view = new View();
-	this.model = new Store('contacts-list');
+	this.model = new Store('contacts');
 	this.controller = new Controller(this.model, this.view);
 
 	this.controller.updateContactsTable();
+	this.view.newContactForm.addEventListener('submit', this.view.addContact);
 }
 
 window.addEventListener('load', init);
