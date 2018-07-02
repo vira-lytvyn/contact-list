@@ -10,12 +10,10 @@ export class Controller {
 }
 
 Controller.prototype.updateContactsTable = function() {
-  console.log(this.view, this.model)
   this.view.renderList(this.model.getContactsList());
 };
 
 Controller.prototype.addContact = function() {
-  console.log(this.view, this.model)
   let contact = this.view.readContactData();
   this.model.saveContact(contact);
   this.updateContactsTable();
