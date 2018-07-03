@@ -6,9 +6,9 @@ export class Controller {
     this.view.addContactBtn.addEventListener('click', this.addContact.bind(this));
 
     // move to item controller
-    this.view.editContact.addEventListener('click', this.editContact.bind(this));
-    this.view.saveContact.addEventListener('click', this.editContact.bind(this));
-    this.view.deleteContact.addEventListener('click', this.addContact.bind(this));
+    // this.view.editContact.addEventListener('click', this.editContact.bind(this));
+    // this.view.saveContact.addEventListener('click', this.editContact.bind(this));
+    // this.view.deleteContact.addEventListener('click', this.addContact.bind(this));
   }
 }
 
