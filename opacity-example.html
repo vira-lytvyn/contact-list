@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>z-index stacking example</title>
+  <style>
+    .red, .green, .blue {
+      position: absolute;
+
+      /* visual properties*/
+      width: 100px;
+      color: white;
+      line-height: 100px;
+      text-align: center;
+    }
+    .red {
+      z-index: 1;
+
+      /* visual properties*/
+      background: red;
+      top: 20px;
+      left: 20px;
+    }
+    .green {
+      background: green;
+      
+      /* visual properties*/
+      top: 60px;
+      left: 60px;
+    }
+    .blue {
+      background: blue;
+      
+      /* visual properties*/
+      top: 100px;
+      left: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <span class="red">Red</span>
+  </div>
+  <div>
+    <span class="green">Green</span>
+  </div>
+  <div>
+    <span class="blue">Blue</span>
+  </div>
+</body>
+</html>
