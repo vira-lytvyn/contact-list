@@ -6,8 +6,6 @@ export class View {
     this.contactList = qs('.contacts-list tbody');
     this.newContactForm = qs('.new-contact');
     this.addContactBtn = qs('.add-contact-btn', this.newContactForm);
-
-    this.notifyEvent = new Event('renderListCompleted');
   }
 }
 
@@ -31,7 +29,6 @@ View.prototype.renderList = function(list) {
     renderedList += this.renderListItem(element);
   });
   this.contactList.innerHTML = renderedList;
-  // this.contactList.dispatchEvent(this.notifyEvent);
 };
 
 View.prototype.readContactData = function() {
@@ -42,11 +39,10 @@ View.prototype.readContactData = function() {
   return new Contact(name, cell, email);
 };
 
-View.prototype.enableEditingContact = function() {
-  const rowEl = this.parentNode.parentNode;
+View.prototype.enableEditingContact = function(rowEl) {
   console.log(rowEl);
 };
 
-View.prototype.getUpdatedContact = function() {
+View.prototype.getUpdatedContact = function(rowEl) {
   // body... 
 };

@@ -17,9 +17,9 @@ Controller.prototype.attachHandlers = function() {
     let contactId = getId(contactRecord);
 
     qs('.edit-btn', contactRecord).addEventListener('click',
-      this.view.enableEditingContact);
+      this.view.enableEditingContact.bind(this, contactRecord));
     qs('.save-btn', contactRecord).addEventListener('click',
-      this.saveContact.bind(this));
+      this.saveContact.bind(this, contactRecord));
     qs('.delete-btn', contactRecord).addEventListener('click',
       this.deleteContact.bind(this, contactId));
   });
@@ -36,8 +36,8 @@ Controller.prototype.addContact = function() {
   this.updateContactsTable();
 };
 
-Controller.prototype.saveContact = function() {
-  let contact = this.view.getUpdatedContact();
+Controller.prototype.saveContact = function(contactRecord) {
+  let contact = this.view.getUpdatedContact(contactRecord);
   this.model.saveEditedContact(contact);
   this.updateContactsTable();
 };
