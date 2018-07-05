@@ -1,4 +1,4 @@
-export {qs, qsa}
+export {qs, qsa, getId}
 
 function qs(selector, context) {
   return (context || document).querySelector(selector);
@@ -6,4 +6,8 @@ function qs(selector, context) {
 
 function qsa(selector, context) {
   return (context || document).querySelectorAll(selector);
+}
+
+function getId(el) {
+  return el.getAttribute('data-contact-id');
 }

@@ -1,19 +1,33 @@
+import {qs, qsa, getId} from './helpers.js';
+
 export class Controller {
   constructor(model, view) {
     this.model = model;
     this.view = view;
 
-    this.view.addContactBtn.addEventListener('click', this.addContact.bind(this));
-
-    // move to item controller
-    // this.view.editContact.addEventListener('click', this.editContact.bind(this));
-    // this.view.saveContact.addEventListener('click', this.editContact.bind(this));
-    // this.view.deleteContact.addEventListener('click', this.addContact.bind(this));
+    this.view.addContactBtn.addEventListener('click',
+      this.addContact.bind(this));
   }
 }
 
+Controller.prototype.attachHandlers = function() {
+  const contactRecords = qsa('.contact-record', this.view.contactList);
+
+  contactRecords.forEach((contactRecord) => {
+    let contactId = getId(contactRecord);
+
+    qs('.edit-btn', contactRecord).addEventListener('click',
+      this.view.enableEditingContact);
+    qs('.save-btn', contactRecord).addEventListener('click',
+      this.saveContact.bind(this));
+    qs('.delete-btn', contactRecord).addEventListener('click',
+      this.deleteContact.bind(this, contactId));
+  });
+};
+
 Controller.prototype.updateContactsTable = function() {
   this.view.renderList(this.model.getContactsList());
+  this.attachHandlers();
 };
 
 Controller.prototype.addContact = function() {
@@ -22,21 +36,13 @@ Controller.prototype.addContact = function() {
   this.updateContactsTable();
 };
 
-Controller.prototype.editContact = function(event, param2, param3, param4) {
-  console.log(event, param2, param3, param4);
-  this.view.enableEditingContact();
-};
-
-Controller.prototype.saveContact = function(event, param2, param3, param4) {
-  console.log(event, param2, param3, param4);
+Controller.prototype.saveContact = function() {
   let contact = this.view.getUpdatedContact();
   this.model.saveEditedContact(contact);
   this.updateContactsTable();
 };
 
-Controller.prototype.deleteContact = function(event, param2, param3, param4) {
-  console.log(event, param2, param3, param4);
-  let contactID = this.view.getItemId();
-  this.model.deleteContact(contact);
+Controller.prototype.deleteContact = function(contactId) {
+  this.model.deleteContact(contactId);
   this.updateContactsTable();
 };

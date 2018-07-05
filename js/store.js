@@ -32,9 +32,9 @@ Store.prototype.saveEditedContact = function(contact){
   this.updateCollection(contactsList);
 };
 
-Store.prototype.deleteContact = function(contact){
+Store.prototype.deleteContact = function(contactId){
   let contactsList = this.getContactsList();
-  let cIndex = findContactIndex(contactsList, contact.id);
+  let cIndex = findContactIndex(contactsList, contactId);
 
   contactsList.splice(cIndex, 1);
   this.updateCollection(contactsList);
