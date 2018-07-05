@@ -5,7 +5,6 @@ export class View {
   constructor() {
     this.contactList = qs('.contacts-list tbody');
     this.newContactForm = qs('.new-contact');
-    this.addContactBtn = qs('.add-contact-btn', this.newContactForm);
   }
 }
 
@@ -32,7 +31,7 @@ View.prototype.renderList = function(list) {
 };
 
 View.prototype.readContactData = function() {
-  const name = qs('#name', this.newContactForm).value;
+  const name = qs('#name', this.newContactForm).value || undefined;
   const cell = qs('#cell', this.newContactForm).value;
   const email = qs('#email', this.newContactForm).value;
 
@@ -45,10 +44,10 @@ View.prototype.enableEditingContact = function(rowEl) {
 };
 
 View.prototype.getUpdatedContact = function(rowEl) {
-  const name = qs('.name', rowEl).innerText;
+  const name = qs('.name', rowEl).innerText || undefined;
   const cell = qs('.cell', rowEl).innerText;
   const email = qs('.email', rowEl).innerText;
-  let contact = new Contact(name, cell, email);
+  const contact = new Contact(name, cell, email);
   contact.id = ga(rowEl);
 
   return contact;

@@ -5,7 +5,7 @@ export class Controller {
     this.model = model;
     this.view = view;
 
-    this.view.addContactBtn.addEventListener('click',
+    this.view.newContactForm.addEventListener('submit',
       this.addContact.bind(this));
   }
 }
@@ -33,7 +33,6 @@ Controller.prototype.updateContactsTable = function() {
 Controller.prototype.addContact = function() {
   let contact = this.view.readContactData();
   this.model.saveContact(contact);
-  this.updateContactsTable();
 };
 
 Controller.prototype.saveContact = function(contactRecord) {

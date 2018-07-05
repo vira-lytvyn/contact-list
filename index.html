@@ -42,14 +42,14 @@
         <legend>Contact info</legend>
         <div class="form-field">
           <label for="cell">Cell Phone Number: <abbr title="required">*</abbr></label>
-          <input type="tell" id="cell">
+          <input type="tel" id="cell" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12" required="true">
         </div>
         <div class="form-field">
           <label for="email">Email address:</label>
           <input type="email" id="email">
         </div>
       </fieldset>
-      <button type="button" class="add-contact-btn">Add contact</button>
+      <button type="submit" class="add-contact-btn">Add contact</button>
     </form>
     <table class="contacts-list">
       <caption>Contacts list</caption>
