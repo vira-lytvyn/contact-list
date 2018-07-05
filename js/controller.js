@@ -1,4 +1,4 @@
-import {qs, qsa, getId} from './helpers.js';
+import {qs, qsa, ga} from './helpers.js';
 
 export class Controller {
   constructor(model, view) {
@@ -14,7 +14,7 @@ Controller.prototype.attachHandlers = function() {
   const contactRecords = qsa('.contact-record', this.view.contactList);
 
   contactRecords.forEach((contactRecord) => {
-    let contactId = getId(contactRecord);
+    let contactId = ga(contactRecord);
 
     qs('.edit-btn', contactRecord).addEventListener('click',
       this.view.enableEditingContact.bind(this, contactRecord));

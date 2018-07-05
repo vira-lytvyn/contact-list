@@ -1,4 +1,4 @@
-import {qs} from './helpers.js';
+import {qs, sca, tc, ga} from './helpers.js';
 import {Contact} from './contact.js';
 
 export class View {
@@ -11,9 +11,9 @@ export class View {
 
 View.prototype.renderListItem = function(item) {
   return `<tr class="contact-record" data-contact-id="${item.id}">
-    <td>${item.name}</td>
-    <td>${item.cell}</td>
-    <td>${item.email}</td>
+    <td class="name">${item.name}</td>
+    <td class="cell">${item.cell}</td>
+    <td class="email">${item.email}</td>
     <td>
       <button type="button" class="edit-btn">Edit</button>
       <button type="button" class="save-btn">Save</button>
@@ -32,17 +32,24 @@ View.prototype.renderList = function(list) {
 };
 
 View.prototype.readContactData = function() {
-  let name = qs('#name', this.newContactForm).value;
-  let cell = qs('#cell', this.newContactForm).value;
-  let email = qs('#email', this.newContactForm).value;
+  const name = qs('#name', this.newContactForm).value;
+  const cell = qs('#cell', this.newContactForm).value;
+  const email = qs('#email', this.newContactForm).value;
 
   return new Contact(name, cell, email);
 };
 
 View.prototype.enableEditingContact = function(rowEl) {
-  console.log(rowEl);
+  sca(rowEl, true);
+  tc(rowEl);
 };
 
 View.prototype.getUpdatedContact = function(rowEl) {
-  // body... 
+  const name = qs('.name', rowEl).innerText;
+  const cell = qs('.cell', rowEl).innerText;
+  const email = qs('.email', rowEl).innerText;
+  let contact = new Contact(name, cell, email);
+  contact.id = ga(rowEl);
+
+  return contact;
 };
